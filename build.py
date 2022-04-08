@@ -5,7 +5,7 @@ from os import mkdir, chdir, environ, chmod
 from os.path import expanduser
 import stat
 
-# run("sudo apt-get -y install autoconf automake build-essential libarchive-tools cmake git-core gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial meson nasm pkg-config python-lxml ragel subversion texinfo yasm wget autopoint -y")
+run("sudo apt-get -y install autoconf automake build-essential libarchive-tools cmake git-core gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial meson nasm pkg-config python-lxml ragel subversion texinfo yasm wget autopoint -y")
 
 repoName = "ffmpeg-cxc-build"
 repoUrl = f"https://github.com/gxjit/{repoName}.git"
