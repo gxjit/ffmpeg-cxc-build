@@ -1,25 +1,26 @@
-#------------------------------------------------------
-#ffmpeg-cxc-build-hints-custom - 2022-03-27 working build as 08/04/22
-#------------------------------------------------------
+#---------------------------------------------------------
+#ffmpeg-native-build-hints-slim - 2022-03-27 working build
+#---------------------------------------------------------
 
 #place this file in the directory specified by the script's ROOT_PATH or
 #set via the command line:
+#HINTS_FILE=/media/user/usb/my-build-hints ffmpeg-native
 
 #fields are TAB delimited triplets enabling control of the build
 #source	key	value
 
 #------------
-#CXC options
+#NCC options
 #------------
-CXC	CFLAGS	-mtune=generic -march=x86-64 -pipe
+NCC	CFLAGS	-mtune=generic -march=x86-64 -pipe
 #x86-64 generic skylake broadwell haswell ivybridge sandybridge corei7-avx westmere nehalem
-CXC	OPTIM	-O3
+NCC	OPTIM	-O3
 #override getconf _NPROCESSORS_ONLN
-#CXC	JOBS	6
+#NCC	JOBS	6
 #use FETCH_ONLY to clone all the repositories without a build
-#CXC	FETCH_ONLY	0
+#NCC	FETCH_ONLY	0
 #display the config only - no fetch/build
-#CXC	SHOW_ONLY	0
+#NCC	SHOW_ONLY	0
 
 #-----------------------------------------------
 #constrain parallel make or disable/enable build
@@ -29,20 +30,16 @@ CXC	OPTIM	-O3
 #source	enable	
 
 #disabled
-amf	disable	
 aom	disable	
 ass	disable	
-avisynth	disable	
 bzip2	disable	
-decklink	disable	
-dlfcn	disable	
+decklink-linux	disable	
 fftw3	disable	
 fontconfig	disable	
 freetype	disable	
 frei0r	disable	
 fribidi	disable	
 harfbuzz	disable	
-mfx	disable	
 nv-codec-headers	disable	
 png	disable	
 rubberband	disable	
@@ -50,10 +47,10 @@ samplerate	disable
 sofa	disable	
 srt	disable	
 theora	disable	
-#vpx	disable
+vpx	disable	
 webp	disable	
-xml2	disable	
-# vmaf disable
+xml2	disable
+vmaf disable
 
 #enabled
 dav1d	enable	
@@ -67,9 +64,9 @@ openssl	make	1
 opus	enable	
 sdl	enable	
 soxr	enable	
-svt-av1 enable
+# svt-av1 enable
 vorbis	enable
-vpx enable
+# vpx enable
 x264	enable	
 x265	enable	
 zlib	enable	
@@ -80,13 +77,10 @@ zlib	enable
 #source	url	url_string
 #ffmpeg	url	https://git.videolan.org/git/ffmpeg.git
 
-#amf	url	file://~/src/amf
 #aom	url	file://~/src/aom
 #ass	url	file://~/src/ass
-#avisynth	url	file://~/src/avisynth
 #bzip2	url	file://~/src/bzip2
-#decklink	url	file://~/src/decklink
-#dlfcn	url	file://~/src/dlfcn
+#decklink-linux  url	file://~/src/decklink-linux
 #fftw3	url	file://~/src/fftw3
 #fontconfig	url	file://~/src/fontconfig
 #freetype	url	file://~/src/freetype
@@ -94,7 +88,6 @@ zlib	enable
 #fribidi	url	file://~/src/fribidi
 #harfbuzz	url	file://~/src/harfbuzz
 #ladspa	url	file://~/src/ladspa
-#mfx	url	file://~/src/mfx
 #nv-codec-headers	url	file://~/src/nv-codec-headers
 #png	url	file://~/src/png
 #rubberband	url	file://~/src/rubberband
@@ -126,15 +119,11 @@ zlib	enable
 #fetch specified revision
 #------------------------
 #source	fetch_method	revision_id
-
-amf	git	fbf12cd39fe1812ed902525a1c001307b94871b9
 aom	git	4becfef8dc7a17a54307d64eeee26bc48943016f
 ass	git	5f0e8450f834894b2745238e3d32ff4878710ec8
-avisynth	git	bc1224b9b801a9a6283ec0b0efa2e90e4a7371ba
 bzip2	git	8ca1faa31f396d94ab927b257f3a05236c84e330
 dav1d	git	87f9a81cd770e49394a45deca7a3df41243de00b
-decklink	git	23194d695a3ae4aca7bc6c2f16dd6e7325a41c27
-dlfcn	git	123c746159233847b91648b39a4a5f6940a1ff2b
+decklink-linux	git	6e9b591d9a3ad7946d2f401cae9832fef722889e
 fdk-aac	git	072f2cdafdd2bb7ed2d630d09c2a5697a4aec53d
 ffmpeg	git	c2d1597a8a6470045a8da241d4f65c81f26c3107
 fftw3	wget	fftw-3.3.10.tar.gz
@@ -145,7 +134,6 @@ fribidi	git	f22593b82b5d1668d1997dbccd10a9c31ffea3b3
 harfbuzz	git	0dcbdbde9cff68384bb3a5b9847283ca0676e54a
 ladspa	git	d99a0db521d13a87bdaa418c674ca8858e484452
 lame	svn	6507
-mfx	git	7e4d221c36c630c1250b23a5dfa15657bc04c10c
 #v9
 #nv-codec-headers	git	7c533c80e68e6a857807a180c771adc764203ef9
 #v10
