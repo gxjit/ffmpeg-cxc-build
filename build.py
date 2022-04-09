@@ -31,7 +31,7 @@ deps = "autoconf automake build-essential libarchive-tools cmake git-core gperf 
 if nativeBuild:
     deps = deps.replace("g++-mingw-w64 gcc-mingw-w64 ", "")
 
-run(f"sudo apt-get -y install {deps} -y")
+run(f"sudo apt-get -y install {deps}")
 
 
 run("pip3 install -U --user meson")
@@ -58,5 +58,6 @@ run(
     f"sh {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build-{currDTime()}.log",
     shell=True,
     env=usrEnv,
-    text=True,
 )
+
+# shlex.split()
