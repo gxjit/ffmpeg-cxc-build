@@ -40,7 +40,7 @@ run("pip3 install -U --user meson", shell=True)
 mkdir(rootPath)
 chdir(rootPath)
 
-run(f"git clone {repoUrl}")
+run(f"git clone {repoUrl}", shell=True)
 
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
 
@@ -51,11 +51,13 @@ usrEnv["HINTS_FILE"] = f"{rootPath}/{repoName}/ffmpeg-{buildType}-build-hints-cu
 if nativeBuild:
     cmdPath = cmdPath.replace(f"-{buldTarget}", "")
 
-run(f"chmod +rx {cmdPath}")
-chmod(cmdPath, stat.S_IXUSR)
+run(f"chmod +rx {cmdPath}", shell=True)
+# chmod(cmdPath, stat.S_IRUSR)
+# chmod(cmdPath, stat.S_IXUSR)
+
 
 run(
-    f"sh {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build-{currDTime()}.log",
+    f"bash {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build-{currDTime()}.log",
     shell=True,
     env=usrEnv,
 )
