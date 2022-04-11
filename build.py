@@ -31,10 +31,10 @@ deps = "autoconf automake build-essential libarchive-tools cmake git-core gperf 
 if nativeBuild:
     deps = deps.replace("g++-mingw-w64 gcc-mingw-w64 ", "")
 
-run(f"sudo apt-get -y install {deps}")
+run(f"sudo apt-get -y install {deps}", shell=True)
 
 
-run("pip3 install -U --user meson")
+run("pip3 install -U --user meson", shell=True)
 
 
 mkdir(rootPath)
