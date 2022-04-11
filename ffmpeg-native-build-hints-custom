@@ -67,7 +67,7 @@ soxr	enable
 svt-av1 enable
 vorbis	enable
 # vpx enable
-vmaf disable
+vmaf enable
 x264	enable	
 x265	enable	
 zlib	enable	
