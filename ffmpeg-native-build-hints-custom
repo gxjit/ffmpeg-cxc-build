@@ -50,7 +50,7 @@ theora	disable
 vpx	disable	
 webp	disable	
 xml2	disable
-vmaf disable
+#vmaf disable
 
 #enabled
 dav1d	enable	
@@ -64,9 +64,10 @@ openssl	make	1
 opus	enable	
 sdl	enable	
 soxr	enable	
-# svt-av1 enable
+svt-av1 enable
 vorbis	enable
 # vpx enable
+vmaf disable
 x264	enable	
 x265	enable	
 zlib	enable	
