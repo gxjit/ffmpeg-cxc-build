@@ -26,7 +26,11 @@ rootPath = f"{usrHome}/ff{buldTarget}-build-{currDTime()}"
 
 print(f"\nBuilding for {buldTarget}\n")
 
-deps = "autoconf automake build-essential libarchive-tools cmake git-core gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial nasm pkg-config python-lxml ragel subversion texinfo yasm wget autopoint"
+deps = (
+    "autoconf automake build-essential libarchive-tools cmake git-core"
+    "gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial nasm pkg-config"
+    "python-lxml ragel subversion texinfo yasm wget autopoint"
+)
 
 if nativeBuild:
     deps = deps.replace("g++-mingw-w64 gcc-mingw-w64 ", "")
