@@ -850,7 +850,7 @@ then
 	if [ "$BUILD" -ne 0 ]
 	then
 		cd_source
-		./configure --prefix="$ROOT_PATH/$OUT_PATH" --extra-cflags="$NCC_CFLAGS" --disable-debug --target=x86_64-linux-gcc --as=yasm --enable-static --disable-shared --disable-examples --disable-tools --disable-docs --disable-unit-tests --enable-vp9 --enable-vp8 --enable-postproc --enable-vp9-postproc --enable-vp9-highbitdepth
+		./configure --prefix="$ROOT_PATH/$OUT_PATH" --extra-cflags="$NCC_CFLAGS" --disable-debug --target=x86_64-linux-gcc --as=yasm --enable-static --disable-shared --disable-examples --disable-tools --disable-docs --disable-unit-tests --enable-vp9 --enable-postproc --enable-vp9-postproc --enable-vp9-highbitdepth
 		[ $? -eq 0 ] || build_die "$THIS: configure stage failed -> $SRC_NAME"
 		build_make $NCC_JOBS
 	fi
