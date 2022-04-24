@@ -1,5 +1,5 @@
 #------------------------------------------------------
-#ffmpeg-cxc-build-hints-custom - 2022-03-27 working build as 08/04/22
+#ffmpeg-cxc-build-hints-custom - Working build as 24/04/22 on Ubuntu 20.04
 #------------------------------------------------------
 
 #place this file in the directory specified by the script's ROOT_PATH or
