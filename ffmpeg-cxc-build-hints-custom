@@ -161,7 +161,7 @@ rubberband	hg	dd230c9836d9
 samplerate	git	4909e679b3e268a1403608cbd860f3895549b0d5
 sdl	git	6d1c3cd6918aa84fe2a0ba7d895169a4f69233bc
 sofa	git	52590e103faf3efd456035ca820a1ae71ee15c6e
-soxr	git	#945b592b70470e29f917f4de89b4281fbbd540c0
+soxr	git	# 945b592b70470e29f917f4de89b4281fbbd540c0
 #commit below is for srt v1.4.4, head may not build/work as expected
 srt	git	8b32f3734ff6af7cc7b0fef272591cb80a2d1aae
 svt-av1	git	#df313c624130847cbd1a47b3b0b4c90b608a2d7a
