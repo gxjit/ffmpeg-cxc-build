@@ -9,10 +9,10 @@ jobs:
       run: python ${{github.workspace}}/build.py
 
     - name: Test
-    working-directory: ${{github.workspace}}/ffmingw64-build/bin
+      working-directory: ${{github.workspace}}/ffmingw64-build/bin
       run: ffmpeg -v
 
     -name: Log
-    working-directory: ${{github.workspace}}/ffmingw64-build/
+      working-directory: ${{github.workspace}}/ffmingw64-build/
       run: cat ffmpeg-build.log
 
