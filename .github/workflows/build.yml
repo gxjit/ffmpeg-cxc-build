@@ -11,8 +11,9 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/ffmingw64-build/bin
       run: ffmpeg -v
-      run: cat ffmpeg-build.log
 
-    # -name: Log
-      # working-directory: ${{github.workspace}}/ffmingw64-build
+    -name: Log
+      run: cat ${{github.workspace}}/ffmpeg-build.log
+      # # working-directory: ${{github.workspace}}/ffmingw64-build
+      # run: cat ffmpeg-build.log
 
