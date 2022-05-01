@@ -13,6 +13,6 @@ jobs:
       run: ffmpeg -v
 
     -name: Log
-      working-directory: ${{github.workspace}}/ffmingw64-build/
+      working-directory: ${{github.workspace}}/ffmingw64-build
       run: cat ffmpeg-build.log
 
