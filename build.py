@@ -28,8 +28,8 @@ rootPath = f"{buildRoot}/ff{buldTarget}-build"
 print(f"\nBuilding for {buldTarget}\n")
 
 deps = (
-    "autoconf automake build-essential libarchive-tools cmake git-core"
-    "gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial nasm pkg-config"
+    "autoconf automake build-essential libarchive-tools cmake git-core "
+    "gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial nasm pkg-config "
     "python-lxml ragel subversion texinfo yasm wget autopoint meson"
 )
 
