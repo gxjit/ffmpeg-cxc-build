@@ -10,9 +10,9 @@ jobs:
         python-version: "3.10"
     - name: Build Test
       run: |
-        python ./build.py
-        cat ./ffmpeg-build.log
-        ./ffmingw64-build/bin/ffmpeg
+        python ${{ github.workspace }}/build.py
+        cat ${{ github.workspace }}/ffmpeg-build.log
+        ${{ github.workspace }}/ffmingw64-build/bin/ffmpeg
 
 
     # - name: Test
