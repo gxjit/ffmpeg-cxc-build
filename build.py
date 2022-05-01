@@ -1,14 +1,15 @@
 from subprocess import run
 from sys import argv, exit
 from datetime import datetime
-from os import mkdir, chdir, environ, chmod
+from os import mkdir, chdir, environ, chmod, getcwd
 from os.path import expanduser
 import stat
 
 repoName = "ffmpeg-cxc-build"
 repoUrl = f"https://github.com/gxjit/{repoName}.git"
 
-usrHome = expanduser("~")
+buildRoot = getcwd()
+# usrHome = expanduser("~")
 currDTime = lambda: datetime.now().strftime("%y%m%d-%H%M%S")
 
 nativeBuild = None
@@ -22,23 +23,20 @@ else:
     buildType = "cxc"
     buldTarget = "mingw64"
 
-rootPath = f"{usrHome}/ff{buldTarget}-build-{currDTime()}"
+rootPath = f"{buildRoot}/ff{buldTarget}-build"
 
 print(f"\nBuilding for {buldTarget}\n")
 
 deps = (
     "autoconf automake build-essential libarchive-tools cmake git-core"
     "gperf g++-mingw-w64 gcc-mingw-w64 libtool mercurial nasm pkg-config"
-    "python-lxml ragel subversion texinfo yasm wget autopoint"
+    "python-lxml ragel subversion texinfo yasm wget autopoint meson"
 )
 
 if nativeBuild:
     deps = deps.replace("g++-mingw-w64 gcc-mingw-w64 ", "")
 
-run(f"sudo apt-get -y install {deps}", shell=True)
-
-
-run("pip3 install -U --user meson", shell=True)
+run(f"sudo apt -y install {deps}", shell=True)
 
 
 mkdir(rootPath)
@@ -61,9 +59,11 @@ run(f"chmod +rx {cmdPath}", shell=True)
 
 
 run(
-    f"bash {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build-{currDTime()}.log",
+    f"bash {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build.log",
     shell=True,
     env=usrEnv,
 )
 
 # shlex.split()
+# rootPath = f"{buildRoot}/ff{buldTarget}-build-{currDTime()}" , ffmpeg-build-{currDTime()}.log"
+# run("pip3 install -U --user meson", shell=True)
