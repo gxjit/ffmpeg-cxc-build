@@ -4,17 +4,15 @@ jobs:
   GA-Build-Test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build Test
-        run: python ${{github.workspace}}/build.py
+    - uses: actions/checkout@v3
+    - name: Build Test
+      run: python ${{github.workspace}}/build.py
 
-      - name: Test
-      working-directory: ${{github.workspace}}/ffmingw64-build/bin
-
+    - name: Test
+    working-directory: ${{github.workspace}}/ffmingw64-build/bin
       run: ffmpeg -v
 
-      -name: Log
-      working-directory: ${{github.workspace}}/ffmingw64-build/
-
+    -name: Log
+    working-directory: ${{github.workspace}}/ffmingw64-build/
       run: cat ffmpeg-build.log
 
