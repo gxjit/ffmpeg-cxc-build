@@ -36,7 +36,7 @@ deps = (
 if nativeBuild:
     deps = deps.replace("g++-mingw-w64 gcc-mingw-w64 ", "")
 
-run(f"sudo apt -y install {deps}", shell=True)
+run(f"sudo apt-get -y install {deps}", shell=True)
 
 
 mkdir(rootPath)
