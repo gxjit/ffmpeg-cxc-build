@@ -2,10 +2,15 @@ name: Build
 on:
   push:
     tags:
-      - "b*-*-*"
+      - 'b*-*-*'
 jobs:
   Build-Upload-Release:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        vers: ['-w', '-l']
+
     steps:
       - uses: actions/setup-python@v3
         with:
@@ -13,8 +18,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: |
-          python ${{ github.workspace }}/build.py -w
-          # python ${{ github.workspace }}/build.py -l
+          python ${{ github.workspace }}/build.py ${{ matrix.vers }}
 
       - name: Upload
         uses: actions/upload-artifact@v3
