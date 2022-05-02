@@ -80,7 +80,7 @@ runP(f"chmod +rx {cmdPath}")
 # chmod(cmdPath, stat.S_IXUSR)
 
 runP(
-    f"bash {cmdPath} 2>&1 | tee {rootPath}/ffmpeg-build.log",
+    f"bash {cmdPath} 2>&1 | tee {buildLog}",
     env=usrEnv,
 )
 
