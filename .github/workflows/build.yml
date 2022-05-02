@@ -4,23 +4,21 @@ jobs:
   GA-Build-Test:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
     - uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+    - uses: actions/checkout@v3
     - name: Build Test
       run: |
         python ${{ github.workspace }}/build.py
-        cat ${{ github.workspace }}/ffmpeg-build.log
-        ${{ github.workspace }}/ffmingw64-build/bin/ffmpeg
 
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: assets-for-download
+        path: |
+          ${{ github.workspace }}/**/ff*build*.zip
+        if-no-files-found: error
+        retention-days: 30
 
-    # - name: Test
-    #   working-directory: ${{github.workspace}}/ffmingw64-build/bin
-    #   run: ffmpeg -v
-
-    # -name: Log
-    #   run: cat ${{github.workspace}}/ffmpeg-build.log
-      # # working-directory: ${{github.workspace}}/ffmingw64-build
-      # run: cat ffmpeg-build.log
 
