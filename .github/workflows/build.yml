@@ -4,16 +4,16 @@ jobs:
   Build-Upload-Release:
     runs-on: ubuntu-20.04
     steps:
-    - name: Build
-    - uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - uses: actions/checkout@v3
-      run: |
-        python ${{ github.workspace }}/build.py -w
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - uses: actions/checkout@v3
+      - name: Build
+        run: |
+          python ${{ github.workspace }}/build.py -w
 
+      - uses: actions/upload-artifact@v3
       - name: Upload
-        uses: actions/upload-artifact@v3
         with:
           name: assets-for-download
           path: |
