@@ -12,11 +12,11 @@ jobs:
         run: |
           python ${{ github.workspace }}/build.py -w
 
-      # - uses: actions/upload-artifact@v3
-      # - name: Upload
-      #   with:
-      #     name: assets-for-download
-      #     path: |
-      #       ${{ github.workspace }}/**/ff*build*.zip
-      #     if-no-files-found: error
-      #     retention-days: 30
+        - uses: actions/upload-artifact@v3
+        - name: Upload
+          with:
+            name: assets-for-download
+            path: |
+              ${{ github.workspace }}/**/ff*build*.zip
+            if-no-files-found: error
+            retention-days: 30
