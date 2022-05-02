@@ -7,6 +7,8 @@ from subprocess import run
 from sys import exit
 from zipfile import ZipFile
 from shutil import rmtree
+from tempfile import TemporaryDirectory
+
 
 
 def parseArgs():
@@ -24,7 +26,6 @@ pargs = parseArgs()
 repoName = "ffmpeg-cxc-build"
 repoUrl = f"https://github.com/gxjit/{repoName}.git"
 
-buildRoot = Path.cwd() if not pargs.home else Path.home()
 
 # logDTime = lambda: datetime.now().strftime("%y%m%d-%H%M%S")
 fDate = lambda: datetime.now().strftime("%d-%m-%y")
@@ -39,12 +40,15 @@ else:
     exit()
 
 buildName = f"ff{buldTarget}-build"
-rootPath = buildRoot.joinpath(buildName)
+
+td = TemporaryDirectory(ignore_cleanup_errors=False)
+buildRoot = Path.cwd() if not pargs.home else Path.home()
+rootPath = Path(td.name) # buildRoot.joinpath(buildName)
 hintsFile = rootPath.joinpath(repoName).joinpath(
     f"ffmpeg-{buildType}-build-hints-custom"
 )
 buildLog = rootPath.joinpath(f"{buildName}.log")
-assetsZip = rootPath.joinpath(f"{buildName}-{fDate()}.zip")
+assetsZip = buildRoot.joinpath(f"{buildName}-{fDate()}.zip")
 
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
 
@@ -89,11 +93,13 @@ with ZipFile(assetsZip, "w") as zipit:
         zipit.write(f, f.name)
     zipit.write(buildLog, buildLog.name)
 
-for f in rootPath.iterdir():
-    if f.is_dir():
-        rmtree(f, ignore_errors=True)
-    if f.name != assetsZip:
-        f.unlink()
+td.cleanup()
+
+# for f in rootPath.iterdir():
+#     if f.is_dir():
+#         rmtree(f, ignore_errors=True)
+#     if f.is_file() and f.name != assetsZip:
+#         f.unlink()
 
 # print(list(rootPath.glob("**/ff*build*.zip")))
 # workflows/b* bin/ff*
