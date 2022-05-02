@@ -70,7 +70,7 @@ runP = partial(run, shell=True, check=True)
 
 runP(f"sudo apt-get -y install {deps}")
 
-mkdir(rootPath)
+# mkdir(rootPath)
 chdir(rootPath)
 
 runP(f"git clone --depth 1 {repoUrl}")
