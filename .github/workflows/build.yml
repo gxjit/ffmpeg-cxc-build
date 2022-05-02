@@ -1,8 +1,11 @@
 name: Build
-on: [push]
+on:
+  push:
+    tags:
+      - "b*-*-*"
 jobs:
   Build-Upload-Release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v3
         with:
@@ -11,6 +14,7 @@ jobs:
       - name: Build
         run: |
           python ${{ github.workspace }}/build.py -w
+          # python ${{ github.workspace }}/build.py -l
 
       - name: Upload
         uses: actions/upload-artifact@v3
