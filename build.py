@@ -1,4 +1,3 @@
-import stat
 from argparse import ArgumentParser
 from datetime import datetime
 from functools import partial
@@ -7,6 +6,7 @@ from pathlib import Path
 from subprocess import run
 from sys import exit
 from zipfile import ZipFile
+from shutil import rmtree
 
 
 def parseArgs():
@@ -26,7 +26,7 @@ repoUrl = f"https://github.com/gxjit/{repoName}.git"
 
 buildRoot = Path.cwd() if not pargs.home else Path.home()
 
-logDTime = lambda: datetime.now().strftime("%y%m%d-%H%M%S")
+# logDTime = lambda: datetime.now().strftime("%y%m%d-%H%M%S")
 fDate = lambda: datetime.now().strftime("%d-%m-%y")
 
 if pargs.linux64:
@@ -45,7 +45,7 @@ hintsFile = rootPath.joinpath(repoName).joinpath(
 )
 buildLog = rootPath.joinpath(f"{buildName}.log")
 assetsZip = rootPath.joinpath(f"{buildName}-{fDate()}.zip")
-# cmdPath
+
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
 
 if not pargs.mingw64:
@@ -76,8 +76,6 @@ usrEnv["ROOT_PATH"] = rootPath
 usrEnv["HINTS_FILE"] = hintsFile
 
 runP(f"chmod +rx {cmdPath}")
-# chmod(cmdPath, stat.S_IRUSR)
-# chmod(cmdPath, stat.S_IXUSR)
 
 runP(
     f"bash {cmdPath} 2>&1 | tee {buildLog}",
@@ -91,10 +89,16 @@ with ZipFile(assetsZip, "w") as zipit:
         zipit.write(f, f.name)
     zipit.write(buildLog, buildLog.name)
 
+for f in rootPath.iterdir():
+    if f.is_dir():
+        rmtree(f, ignore_errors=True)
+    if f.name != assetsZip:
+        f.unlink()
 
-# shlex.split()
-# chdir(buildRoot)
 # print(list(rootPath.glob("**/ff*build*.zip")))
 # workflows/b* bin/ff*
-# rootPath = f"{buildRoot}/ff{buldTarget}-build-{logDTime()}" , ffmpeg-build-{logDTime()}.log"
 # run("pip3 install -U --user meson", shell=True)
+# import stat
+# chmod(cmdPath, stat.S_IRUSR)
+# chmod(cmdPath, stat.S_IXUSR)
+# shlex.split()

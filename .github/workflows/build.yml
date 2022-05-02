@@ -1,24 +1,22 @@
-name: GitHub Actions Build Test
+name: Build
 on: [push]
 jobs:
-  GA-Build-Test:
+  Build-Upload-Release:
     runs-on: ubuntu-20.04
     steps:
+    - name: Build
     - uses: actions/setup-python@v3
       with:
         python-version: "3.10"
     - uses: actions/checkout@v3
-    - name: Build Test
       run: |
         python ${{ github.workspace }}/build.py -w
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: assets-for-download
-        path: |
-          ${{ github.workspace }}/**/ff*build*.zip
-        if-no-files-found: error
-        retention-days: 30
-
-
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: assets-for-download
+          path: |
+            ${{ github.workspace }}/**/ff*build*.zip
+          if-no-files-found: error
+          retention-days: 30
