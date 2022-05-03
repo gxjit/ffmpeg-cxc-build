@@ -31,6 +31,6 @@ jobs:
         with:
           name: ${{ env.repo }}-${{ env.ref }}
           path: |
-            ${{ github.workspace }}/**/ff*build*.zip
+            ${{ github.workspace }}/**/built/*.zip
           if-no-files-found: error
           retention-days: 60
