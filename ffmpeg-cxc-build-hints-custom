@@ -43,6 +43,7 @@ frei0r	disable
 fribidi	disable	
 harfbuzz	disable	
 mfx	disable	
+openssl disable
 nv-codec-headers	disable	
 png	disable	
 rubberband	disable	
@@ -50,10 +51,10 @@ samplerate	disable
 sofa	disable	
 srt	disable	
 theora	disable	
-# vpx	disable
 webp	disable	
 xml2	disable	
-# vmaf disable
+# vpx	disable
+vmaf disable
 
 #enabled
 dav1d	enable	
@@ -62,8 +63,8 @@ ffmpeg	enable
 lame	enable	
 #lame	make	1
 ogg	enable	
-openssl	enable	
-openssl	make	1
+#openssl	enable
+#openssl	make	1
 opus	enable	
 sdl	enable	
 soxr	enable	
@@ -135,10 +136,13 @@ ogg	git
 opus	git
 soxr	git
 svt-av1	git
+sdl git
 vorbis	git
 vpx	git
 x264	git
 x265	git
+zlib  git
+
 amf	git	fbf12cd39fe1812ed902525a1c001307b94871b9
 ass	git	5f0e8450f834894b2745238e3d32ff4878710ec8
 avisynth	git	bc1224b9b801a9a6283ec0b0efa2e90e4a7371ba
@@ -165,7 +169,6 @@ openssl	git	d82e959e621a3d597f1e0d50ff8c2d8b96915fd7
 png	git	a37d4836519517bdce6cb9d956092321eca3e73b
 rubberband	hg	dd230c9836d9
 samplerate	git	4909e679b3e268a1403608cbd860f3895549b0d5
-sdl	git	6d1c3cd6918aa84fe2a0ba7d895169a4f69233bc
 sofa	git	52590e103faf3efd456035ca820a1ae71ee15c6e
 #commit below is for srt v1.4.4, head may not build/work as expected
 srt	git	8b32f3734ff6af7cc7b0fef272591cb80a2d1aae
@@ -174,4 +177,3 @@ theora	git	7180717276af1ebc7da15c83162d6c5d6203aabf
 vmaf	git	5c1c9bfaad599796921b59873e9c3ed74a29c6ff
 webp	git	7a68afaac56306b4d118a6a969d5acd252a3dbc1
 xml2	git	968495442964f3ea72499dfbdba9e2fa9d77f9b7
-zlib	git	cacf7f1d4e3d44d871b605da3b647f07d718623f
