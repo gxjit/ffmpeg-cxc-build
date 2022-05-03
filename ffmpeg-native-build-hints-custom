@@ -40,7 +40,7 @@ freetype	disable
 frei0r	disable	
 fribidi	disable	
 harfbuzz	disable	
-openssl disable
+#openssl disable
 nv-codec-headers	disable	
 png	disable	
 rubberband	disable	
@@ -50,7 +50,7 @@ srt	disable
 theora	disable	
 webp	disable	
 xml2	disable
-# vpx	disable
+#vpx	disable
 vmaf disable
 
 #enabled
@@ -60,8 +60,8 @@ ffmpeg	enable
 lame	enable	
 #lame	make	1
 ogg	enable	
-#openssl	enable
-#openssl	make	1
+openssl	enable
+openssl	make	1
 opus	enable	
 sdl	enable	
 soxr	enable	
