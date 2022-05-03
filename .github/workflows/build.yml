@@ -35,3 +35,5 @@ jobs:
             ${{ env.dist_dir }}/*.zip
           if-no-files-found: error
           retention-days: 60
+        permissions:
+          contents: write
