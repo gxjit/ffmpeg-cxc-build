@@ -3,7 +3,6 @@ from datetime import datetime
 from functools import partial
 from os import chdir, environ
 from pathlib import Path
-from shutil import rmtree
 from subprocess import run
 from sys import exit
 from tempfile import TemporaryDirectory
@@ -31,14 +30,14 @@ fDate = lambda: datetime.now().strftime("%d-%m-%y")
 
 if pargs.linux64:
     buildType = "native"
-    buldTarget = "linux64"
+    buildTarget = "linux64"
 elif pargs.mingw64:
     buildType = "cxc"
-    buldTarget = "mingw64"
+    buildTarget = "mingw64"
 else:
     exit()
 
-buildName = f"ff{buldTarget}-build"
+buildName = f"ffmpeg-{buildTarget}-build"
 
 td = TemporaryDirectory(ignore_cleanup_errors=False)
 buildRoot = Path.cwd() if not pargs.home else Path.home()
@@ -54,12 +53,12 @@ distDir = (
 )
 assetsZip = distDir.joinpath(f"{buildName}-{fDate()}.zip")
 
-cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
+cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buildTarget}"
 
 if not pargs.mingw64:
-    cmdPath = cmdPath.replace(f"-{buldTarget}", "")
+    cmdPath = cmdPath.replace(f"-{buildTarget}", "")
 
-print(f"\nBuilding for {buldTarget} in {rootPath}\n")
+print(f"\nBuilding for {buildTarget} in {rootPath}\n")
 
 deps = (
     "autoconf automake build-essential libarchive-tools cmake git-core "
@@ -74,7 +73,9 @@ runP = partial(run, shell=True, check=True)
 
 runP(f"sudo apt-get -y install {deps}")
 
-# mkdir(rootPath)
+if not rootPath.exists():
+    rootPath.mkdir()
+
 chdir(rootPath)
 
 runP(f"git clone --depth 1 {repoUrl}")
@@ -92,7 +93,8 @@ runP(
 
 built = list(rootPath.rglob("bin/ff*"))
 
-distDir.mkdir()
+if not distDir.exists():
+    distDir.mkdir()
 
 with ZipFile(assetsZip, "w") as zipit:
     for f in built:
@@ -101,14 +103,6 @@ with ZipFile(assetsZip, "w") as zipit:
 
 td.cleanup()
 
-# for f in rootPath.iterdir():
-#     if f.is_dir():
-#         rmtree(f, ignore_errors=True)
-#     if f.is_file() and f.name != assetsZip:
-#         f.unlink()
-
-# print(list(rootPath.glob("**/ff*build*.zip")))
-# workflows/b* bin/ff*
 # run("pip3 install -U --user meson", shell=True)
 # import stat
 # chmod(cmdPath, stat.S_IRUSR)
