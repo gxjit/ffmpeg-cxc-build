@@ -8,8 +8,8 @@ env:
   repo: ${{ github.event.repository.name }}
   ref: ${{ github.ref_name }}
   dist_dir: ${{ github.workspace }}/dist
-  # CC:   gcc-10 # use latest gcc available
-  # CXX:  g++-10
+  # CC:   gcc-10 # use latest gcc available?
+  # CXX:  g++-10 # but opus build fails with gcc 10
 
 jobs:
   Build-Upload-Release:
