@@ -48,7 +48,8 @@ hintsFile = rootPath.joinpath(repoName).joinpath(
     f"ffmpeg-{buildType}-build-hints-custom"
 )
 buildLog = rootPath.joinpath(f"{buildName}.log")
-assetsZip = buildRoot.joinpath(f"{buildName}-{fDate()}.zip")
+distDir = rootPath.joinpath('built')
+assetsZip = distDir.joinpath(f"{buildName}-{fDate()}.zip")
 
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
 

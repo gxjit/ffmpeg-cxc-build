@@ -23,7 +23,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: build-download
+          name: ${{ github.event.repository.name }}-${{ github.ref_name }}
           path: |
             ${{ github.workspace }}/**/ff*build*.zip
           if-no-files-found: error
