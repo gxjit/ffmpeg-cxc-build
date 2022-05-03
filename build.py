@@ -1,14 +1,13 @@
 from argparse import ArgumentParser
 from datetime import datetime
 from functools import partial
-from os import chdir, environ, mkdir
+from os import chdir, environ
 from pathlib import Path
 from subprocess import run
 from sys import exit
 from zipfile import ZipFile
 from shutil import rmtree
 from tempfile import TemporaryDirectory
-
 
 
 def parseArgs():
@@ -43,12 +42,12 @@ buildName = f"ff{buldTarget}-build"
 
 td = TemporaryDirectory(ignore_cleanup_errors=False)
 buildRoot = Path.cwd() if not pargs.home else Path.home()
-rootPath = Path(td.name) # buildRoot.joinpath(buildName)
+rootPath = Path(td.name)  # buildRoot.joinpath(buildName)
 hintsFile = rootPath.joinpath(repoName).joinpath(
     f"ffmpeg-{buildType}-build-hints-custom"
 )
 buildLog = rootPath.joinpath(f"{buildName}.log")
-distDir = rootPath.joinpath('built')
+distDir = rootPath.joinpath("built")
 assetsZip = distDir.joinpath(f"{buildName}-{fDate()}.zip")
 
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
@@ -88,6 +87,8 @@ runP(
 )
 
 built = list(rootPath.rglob("bin/ff*"))
+
+distDir.mkdir()
 
 with ZipFile(assetsZip, "w") as zipit:
     for f in built:

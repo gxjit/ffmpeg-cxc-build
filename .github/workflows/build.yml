@@ -3,11 +3,17 @@ on:
   push:
     tags:
       - 'b*-*-*'
+
+env:
+  repo: ${{ github.event.repository.name }}
+  ref: ${{ github.ref_name }}
+
 jobs:
   Build-Upload-Release:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         vers: ['-w', '-l']
 
@@ -23,8 +29,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.repository.name }}-${{ github.ref_name }}
+          name: ${{ env.repo }}-${{ env.ref }}
           path: |
             ${{ github.workspace }}/**/ff*build*.zip
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 60
