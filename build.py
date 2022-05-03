@@ -3,11 +3,11 @@ from datetime import datetime
 from functools import partial
 from os import chdir, environ
 from pathlib import Path
+from shutil import rmtree
 from subprocess import run
 from sys import exit
-from zipfile import ZipFile
-from shutil import rmtree
 from tempfile import TemporaryDirectory
+from zipfile import ZipFile
 
 
 def parseArgs():
@@ -47,7 +47,11 @@ hintsFile = rootPath.joinpath(repoName).joinpath(
     f"ffmpeg-{buildType}-build-hints-custom"
 )
 buildLog = rootPath.joinpath(f"{buildName}.log")
-distDir = rootPath.joinpath("built")
+distDir = (
+    Path(environ.get("dist_dir"))
+    if environ.get("dist_dir")
+    else rootPath.joinpath("dist")
+)
 assetsZip = distDir.joinpath(f"{buildName}-{fDate()}.zip")
 
 cmdPath = f"{rootPath}/{repoName}/ffmpeg-{buildType}-{buldTarget}"
