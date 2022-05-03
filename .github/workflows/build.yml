@@ -7,6 +7,7 @@ on:
 env:
   repo: ${{ github.event.repository.name }}
   ref: ${{ github.ref_name }}
+  dist_dir: ${{ github.workspace }}/dist
 
 jobs:
   Build-Upload-Release:
@@ -31,6 +32,6 @@ jobs:
         with:
           name: ${{ env.repo }}-${{ env.ref }}
           path: |
-            ${{ github.workspace }}/**/built/*.zip
+            ${{ env.dist_dir }}/*.zip
           if-no-files-found: error
           retention-days: 60
