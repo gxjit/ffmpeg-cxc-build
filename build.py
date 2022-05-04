@@ -93,6 +93,9 @@ runP(
 
 built = list(rootPath.rglob("bin/ff*"))
 
+# for f in built:
+#     runP(f, '-version')
+
 if not distDir.exists():
     distDir.mkdir()
 
