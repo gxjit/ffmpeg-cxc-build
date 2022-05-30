@@ -30,6 +30,7 @@ NCC	OPTIM	-O3
 #source	enable	
 
 #disabled
+#vpx	disable
 aom	disable	
 ass	disable	
 bzip2	disable	
@@ -50,15 +51,14 @@ srt	disable
 theora	disable	
 webp	disable	
 xml2	disable
-#vpx	disable
 vmaf disable
 
 #enabled
+#lame	make	1
 dav1d	enable	
 fdk-aac	enable	
 ffmpeg	enable	
 lame	enable	
-#lame	make	1
 ogg	enable	
 openssl	enable
 openssl	make	1
