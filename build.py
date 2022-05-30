@@ -93,8 +93,9 @@ runP(
 
 built = list(rootPath.rglob("bin/ff*"))
 
-# for f in built:
-#     runP(f, '-version')
+# if not pargs.mingw64:
+#     for f in built:
+#         runP([str(f), '-version'])
 
 if not distDir.exists():
     distDir.mkdir()
@@ -106,7 +107,7 @@ with ZipFile(assetsZip, "w") as zipit:
 
 td.cleanup()
 
-# run("pip3 install -U --user meson", shell=True)
+# runP("pip3 install -U --user meson")
 # import stat
 # chmod(cmdPath, stat.S_IRUSR)
 # chmod(cmdPath, stat.S_IXUSR)
