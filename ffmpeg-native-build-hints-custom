@@ -31,6 +31,7 @@ NCC	OPTIM	-O3
 
 #disabled
 #vpx	disable
+#openssl disable
 aom	disable	
 ass	disable	
 bzip2	disable	
@@ -41,7 +42,6 @@ freetype	disable
 frei0r	disable	
 fribidi	disable	
 harfbuzz	disable	
-#openssl disable
 nv-codec-headers	disable	
 png	disable	
 rubberband	disable	
