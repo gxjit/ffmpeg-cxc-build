@@ -136,8 +136,11 @@ x264	git
 x265	git
 zlib  git
 
+openssl	git	ca2e0784d2c38edcefd5d68028f4d954bd8faddb
+bzip2	git	64d6fa68c1af46f6408f832443ce23709a2f0a66
+lame	svn	6507
+vmaf	git	f2661673a078718ddfc1ddb6042048c1b1284946
 ass	git	5f0e8450f834894b2745238e3d32ff4878710ec8
-bzip2	git	8ca1faa31f396d94ab927b257f3a05236c84e330
 decklink-linux	git	6e9b591d9a3ad7946d2f401cae9832fef722889e
 fftw3	wget	fftw-3.3.10.tar.gz
 fontconfig	git	d485760bbefba003c974699d0277f61697bf6282
@@ -146,7 +149,6 @@ frei0r	git	febd73874dab6be330398a3b55112451b36ee939
 fribidi	git	f22593b82b5d1668d1997dbccd10a9c31ffea3b3
 harfbuzz	git	0dcbdbde9cff68384bb3a5b9847283ca0676e54a
 ladspa	git	d99a0db521d13a87bdaa418c674ca8858e484452
-lame	svn	6507
 #v9
 #nv-codec-headers	git	7c533c80e68e6a857807a180c771adc764203ef9
 #v10
@@ -154,7 +156,6 @@ lame	svn	6507
 #v11
 nv-codec-headers	git	b641a195edbe3ac9788e681e22c2e2fad8aacddb
 #commit below is for openssl 1.1.1.n, head may not build/work as expected
-openssl	git	d82e959e621a3d597f1e0d50ff8c2d8b96915fd7
 png	git	a37d4836519517bdce6cb9d956092321eca3e73b
 rubberband	hg	dd230c9836d9
 samplerate	git	4909e679b3e268a1403608cbd860f3895549b0d5
@@ -163,6 +164,5 @@ sofa	git	52590e103faf3efd456035ca820a1ae71ee15c6e
 srt	git	8b32f3734ff6af7cc7b0fef272591cb80a2d1aae
 theora	git	7180717276af1ebc7da15c83162d6c5d6203aabf
 #commit below is for vmaf v2.3.0, head may not build/work as expected
-vmaf	git	5c1c9bfaad599796921b59873e9c3ed74a29c6ff
 webp	git	7a68afaac56306b4d118a6a969d5acd252a3dbc1
 xml2	git	968495442964f3ea72499dfbdba9e2fa9d77f9b7
