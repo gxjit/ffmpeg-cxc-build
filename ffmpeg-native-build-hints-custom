@@ -60,9 +60,9 @@ fdk-aac	enable
 ffmpeg	enable	
 lame	enable	
 ogg	enable	
+opus	enable
 openssl	enable
 openssl	make	1
-opus	enable	
 sdl	enable	
 soxr	enable	
 svt-av1 enable
