@@ -29,8 +29,8 @@ CXC	OPTIM	-O3
 #source	enable	
 
 #disabled
-#openssl disable
 #vpx	disable
+openssl disable
 amf	disable	
 aom	disable	
 ass	disable	
@@ -58,13 +58,13 @@ vmaf disable
 
 #enabled
 #lame	make	1
+#openssl	enable
+#openssl	make	1
 dav1d	enable	
 fdk-aac	enable	
 ffmpeg	enable	
 lame	enable	
 ogg	enable	
-openssl	enable
-openssl	make	1
 opus	enable	
 sdl	enable	
 soxr	enable	
