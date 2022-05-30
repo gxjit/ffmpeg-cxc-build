@@ -61,9 +61,9 @@ if not pargs.mingw64:
 print(f"\nBuilding for {buildTarget} in {rootPath}\n")
 
 deps = (
-    "autoconf automake build-essential libarchive-tools cmake git-core "
-    "gperf libtool mercurial nasm pkg-config "
-    "python-lxml ragel subversion texinfo yasm wget autopoint meson"
+    "autoconf automake autopoint build-essential libarchive-tools cmake "
+    "git-core gperf libtool mercurial meson nasm pkg-config "
+    "python3-lxml ragel subversion texinfo yasm wget"
 )
 
 if pargs.mingw64:
