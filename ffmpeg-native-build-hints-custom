@@ -1,5 +1,5 @@
 #---------------------------------------------------------
-#ffmpeg-native-build-hints-slim - Working build as 03/05/22 on Ubuntu 20.04.4
+#ffmpeg-native-build-hints-slim - Working build as 30/05/22 on Ubuntu 20.04.4
 #---------------------------------------------------------
 
 #place this file in the directory specified by the script's ROOT_PATH or
